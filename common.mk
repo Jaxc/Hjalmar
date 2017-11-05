@@ -35,7 +35,8 @@ Application/User \
 Drivers \
 Application \
 Application/MAKEFILE \
-Drivers/STM32F4xx_HAL_Driver
+Drivers/STM32F4xx_HAL_Driver \
+Middlewares/ST/STM32_USB_Device_library/Class
 
 # firmware library path
 PERIFLIB_PATH = 
@@ -50,7 +51,9 @@ OBJ_DIR = $(BUILD_DIR)/obj
 # C sources
 C_SOURCES =  \
 $(wildcard Src/*.c)\
-$(wildcard Drivers/STM32F4xx_HAL_Driver/Src/*.c) 
+$(wildcard Drivers/STM32F4xx_HAL_Driver/Src/*.c) \
+$(wildcard Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/*.c)\
+$(wildcard Middlewares/ST/STM32_USB_Device_Library/Core/Src/*.c)
 
 # ASM sources
 ASM_SOURCES =  \
@@ -110,7 +113,9 @@ C_INCLUDES =  \
 -IDrivers/STM32F4xx_HAL_Driver/Inc \
 -IDrivers/STM32F4xx_HAL_Driver/Inc/Legacy \
 -IDrivers/CMSIS/Device/ST/STM32F4xx/Include \
--IDrivers/CMSIS/Include
+-IDrivers/CMSIS/Include \
+-IMiddlewares/ST/STM32_USB_Device_Library/Core/Inc \
+-IMiddlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc
 
 
 # compile gcc flags
