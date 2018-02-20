@@ -1,6 +1,19 @@
 import sys
 
+import serial_if as serial
 
+com_port = ''
+
+def cmd_init():
+	print(com_port+"hej")
+	serial.serial_init(com_port)
+
+def cmd_deinit():
+	serial.serial_exit()
+
+def set_com_port(port):
+	com_port = port;
+	print(com_port)
 
 def slider_update(source, value):
 	#if true: # check which slider

@@ -1,6 +1,7 @@
 from tkinter import *
 
 import cmd_handler as cmd
+import serial_if as serial
 
 
 
@@ -16,6 +17,9 @@ class Window(Frame):
 
         #reference to the master widget, which is the tk window                 
         self.master = master
+
+        #init cmd
+        #cmd.cmd_init()
 
         #with that, we want to then run init_window, which doesn't yet exist
         self.init_window()
@@ -50,10 +54,12 @@ class Window(Frame):
 
         # create the file object)
         edit = Menu(menu)
-
+        com_ports=serial.serial_ports()
+        for port in com_ports:
+            edit.add_command(label=port, command=cmd.set_com_port(port))
         # adds a command to the menu option, calling it exit, and the
         # command it runs on event is client_exit
-        edit.add_command(label="Undo")
+        edit.add_command(label="Connect", command=cmd.cmd_init)
 
         #added "file" to our menu
         menu.add_cascade(label="Edit", menu=edit)
@@ -86,6 +92,7 @@ class Window(Frame):
         #e2.grid(row=1, column=1)
 
     def client_exit(self):
+        #cmd.cmd_deinit()
         exit()
 
 if __name__ == "__main__":
