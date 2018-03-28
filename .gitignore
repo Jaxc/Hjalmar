@@ -1,3 +1,4 @@
 out/
 .settings/
 *.tmp
+host_code/gui/__pycache__/
